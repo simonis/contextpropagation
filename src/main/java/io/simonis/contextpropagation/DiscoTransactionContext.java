@@ -8,6 +8,7 @@
 
 package io.simonis.contextpropagation;
 
+import java.util.List;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ExecutorService;
@@ -122,11 +123,16 @@ public class DiscoTransactionContext {
     Executor pe = (Executor)Proxy.newProxyInstance(Executor.class.getClassLoader(), new Class<?>[] { Executor.class }, ih);
     pe.execute(r);
 
+    List<Integer> il = List.of(1, 2, 3, 4);
+    il.parallelStream().forEach(i -> printContext());
+
     int context = TransactionContext.create();
     System.out.println("TransactionContext = " + context);
     TransactionContext.putMetadata("Hey", "Dude");
 
     printContext();
+
+    il.parallelStream().forEach(i -> printContext());
 
     threadWithRunnable(r);
 
