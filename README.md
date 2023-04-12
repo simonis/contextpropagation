@@ -29,7 +29,7 @@ TransactionContext = 0
 
 To get full debug logging run with:
 
-```
+```console
 $ java -javaagent:target/dependency/disco-java-agent-0.13.0.jar=loggerfactory=software.amazon.disco.agent.reflect.logging.StandardOutputLoggerFactory:extraverbose -Xlog:class+load+redefine -jar target/context-propagation-full.jar
 ...
 [software.amazon.disco.agent.DiscoAgentTemplate] DiSCo(Core) passing arguments to ExecutorInterceptor to process
