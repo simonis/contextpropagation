@@ -4,27 +4,43 @@
 ```ShellSession
 $ mvn clean package
 $ java -jar target/context-propagation-full.jar
-15:MyExecutor Thread:null
 14:pool-1-thread-1:null
+15:MyExecutor Thread:null
 16:MyInvocationHandler Thread:null
+1:main:null
+1:main:null
+1:main:null
+17:ForkJoinPool.commonPool-worker-1:null
 TransactionContext = 0
 1:main:Dude
-17:Thread with Runnable:null
+1:main:Dude
+1:main:Dude
+18:ForkJoinPool.commonPool-worker-2:null
+17:ForkJoinPool.commonPool-worker-1:null
+20:Thread with Runnable:null
+21:Thread with run():null
 14:pool-1-thread-1:null
-18:Thread with run():null
 15:MyExecutor Thread:null
 16:MyInvocationHandler Thread:null
 $ java -javaagent:target/dependency/disco-java-agent-0.13.0.jar -jar target/context-propagation-full.jar
 14:pool-1-thread-1:null
 15:MyExecutor Thread:null
 16:MyInvocationHandler Thread:null
+1:main:null
+1:main:null
+1:main:null
+17:ForkJoinPool.commonPool-worker-1:null
 TransactionContext = 0
 1:main:Dude
+1:main:Dude
+18:ForkJoinPool.commonPool-worker-2:Dude
+17:ForkJoinPool.commonPool-worker-1:Dude
+18:ForkJoinPool.commonPool-worker-2:Dude
+20:Thread with Runnable:Dude
+21:Thread with run():Dude
 16:MyInvocationHandler Thread:null
-15:MyExecutor Thread:Dude
-17:Thread with Runnable:Dude
 14:pool-1-thread-1:Dude
-18:Thread with run():Dude
+15:MyExecutor Thread:Dude
 ```
 
 To get full debug logging run with:
